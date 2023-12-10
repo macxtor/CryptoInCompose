@@ -1,5 +1,5 @@
 
-<img src="https://github.com/macxtor/CryptoInCompose/blob/ui-layer/screenshots/home-screen.png" alt="Architecture Diagram" width="30%" height="30%">
+<img src="https://github.com/macxtor/CryptoInCompose/blob/main/screenshots/home-screen.png" alt="Architecture Diagram" width="30%" height="30%">
 
 # CryptoInCompose Android App
 CryptoInCompose is an Android application that allows users to explore and track cryptocurrency data using Jetpack Compose.
