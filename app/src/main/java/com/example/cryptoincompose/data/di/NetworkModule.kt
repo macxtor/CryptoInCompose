@@ -22,6 +22,10 @@ class NetworkModule @Inject constructor() {
     fun provideBaseApiUrl(): String = BuildConfig.BASE_API_URL
 
     @Provides
+    @Named("apiKey")
+    fun provideApiKey(): String = BuildConfig.API_KEY
+
+    @Provides
     fun provideRetrofitBuilder(): Retrofit.Builder {
         return Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
@@ -41,6 +45,7 @@ class NetworkModule @Inject constructor() {
 
     @Provides
     fun provideCryptoRepository(
-        cryptoApi: CryptoApi
-    ): CryptoRepository = CryptoRepositoryImpl(cryptoApi)
+        cryptoApi: CryptoApi,
+        @Named("apiKey") apiKey: String
+    ): CryptoRepository = CryptoRepositoryImpl(cryptoApi, apiKey)
 }

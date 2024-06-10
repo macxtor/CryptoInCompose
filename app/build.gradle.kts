@@ -23,6 +23,7 @@ android {
     buildTypes {
         release {
             buildConfigField("String", "BASE_API_URL", "\"https://api.coingecko.com/api/v3/\"")
+            buildConfigField("String", "API_KEY", "\"CG-qepnx7aaCRhNEmF65SW4ZtKp\"")
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -31,6 +32,7 @@ android {
         }
         debug {
             buildConfigField("String", "BASE_API_URL", "\"https://api.coingecko.com/api/v3/\"")
+            buildConfigField("String", "API_KEY", "\"CG-qepnx7aaCRhNEmF65SW4ZtKp\"")
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
