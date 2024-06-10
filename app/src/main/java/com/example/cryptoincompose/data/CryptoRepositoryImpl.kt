@@ -6,9 +6,11 @@ import com.example.cryptoincompose.data.service.CryptoApi
 import com.example.cryptoincompose.domain.CryptoRepository
 import com.example.cryptoincompose.domain.entities.Coin
 import javax.inject.Inject
+import javax.inject.Named
 
 class CryptoRepositoryImpl @Inject constructor(
-    private val cryptoApi: CryptoApi
+    private val cryptoApi: CryptoApi,
+    private val apiKey: String
 ) : CryptoRepository {
 
     companion object {
@@ -18,6 +20,7 @@ class CryptoRepositoryImpl @Inject constructor(
         private const val COINS_ORDER = "market_cap_desc"
         private const val MY_COINS_PRICE_CHANGE_IN_HOUR = "24h"
     }
+
     override suspend fun getCoins(): Result<List<Coin>> {
         return try {
             Result.Success(
@@ -26,7 +29,8 @@ class CryptoRepositoryImpl @Inject constructor(
                     itemOrder = COINS_ORDER,
                     currency = VS_CURRENCY,
                     page = INITIAL_PAGE,
-                    priceChangePercentage = MY_COINS_PRICE_CHANGE_IN_HOUR
+                    priceChangePercentage = MY_COINS_PRICE_CHANGE_IN_HOUR,
+                    apiKey = apiKey
                 ).map { it.toDomain() })
         } catch (exception: Exception) {
             Result.Error(exception)

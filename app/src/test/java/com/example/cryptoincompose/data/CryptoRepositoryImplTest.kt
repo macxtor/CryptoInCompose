@@ -23,12 +23,14 @@ class CryptoRepositoryImplTest {
     @MockK
     private lateinit var cryptoApi: CryptoApi
 
+    private val apiKey: String="123"
+
     private lateinit var cryptoRepository: CryptoRepositoryImpl
 
     @Before
     fun setUp() {
         MockKAnnotations.init(this)
-        cryptoRepository = CryptoRepositoryImpl(cryptoApi)
+        cryptoRepository = CryptoRepositoryImpl(cryptoApi, apiKey)
     }
 
     @Test
@@ -42,7 +44,8 @@ class CryptoRepositoryImplTest {
                 itemPerPage = any(),
                 priceChangePercentage = any(),
                 currency = any(),
-                page = any()
+                page = any(),
+                apiKey = any()
             )
         } returns (mockCoinsApiResponse)
 
@@ -68,7 +71,8 @@ class CryptoRepositoryImplTest {
                 itemPerPage = any(),
                 priceChangePercentage = any(),
                 currency = any(),
-                page = any()
+                page = any(),
+                apiKey = any()
             )
         } throws expectedException
 
